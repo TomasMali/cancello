@@ -15,6 +15,9 @@ const axios = require('axios');
 const APRI_CANCELLO = "\ud83d\udde3 Apri cancello"
 const APRI_CANCELLO_2 = "\ud83d\udde3 Apri cancello 2"
 
+var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+var LED = new Gpio(17, 'out'); //use GPIO pin 4 as output
+
 
 
 inline_keyboard = [];
@@ -39,8 +42,7 @@ bot.onText(/\/start/, (msg) => {
 function apri(){
 
 
-    var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
-    var LED = new Gpio(17, 'out'); //use GPIO pin 4 as output
+
   
       LED.writeSync(1); //turn LED on or off depending on the button state (0 or 1)
 }
