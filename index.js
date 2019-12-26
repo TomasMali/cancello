@@ -47,7 +47,7 @@ function apri(){
       LED.writeSync(1); //turn LED on or off depending on the button state (0 or 1)
 
 
-      setTimeout(() => {LED.writeSync(0);}, 1000);
+      setTimeout(() => {LED.writeSync(0);}, 100);
 }
 
 
@@ -64,7 +64,7 @@ bot.on('message', (msg) => {
 
      
 
-          setTimeout(apri, 1000);
+          setTimeout(apri, 500);
 
 
          
