@@ -35,6 +35,17 @@ bot.onText(/\/start/, (msg) => {
         });
 });
 
+
+function apri(){
+
+
+    var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+    var LED = new Gpio(17, 'out'); //use GPIO pin 4 as output
+  
+      LED.writeSync(1); //turn LED on or off depending on the button state (0 or 1)
+}
+
+
 // Catch every messagge text 
 bot.on('message', (msg) => {
 
@@ -44,6 +55,12 @@ bot.on('message', (msg) => {
     if (msg.text.toString() === APRI_CANCELLO) {
 
         bot.sendMessage(msg.chat.id, "Il cancello 1 è stato aperto!")
+
+
+     
+
+          setTimeout(apri, 1000);
+
 
 
     }
