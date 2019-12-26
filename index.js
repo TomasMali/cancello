@@ -63,10 +63,13 @@ bot.on('message', (msg) => {
 
           setTimeout(apri, 1000);
 
-          LED.writeSync(0);
+          setTimeout(() => {LED.writeSync(0);}, 1000);
+
+         
 
     }
     else if (msg.text.toString().indexOf(APRI_CANCELLO_2) === 0) {
+        LED.writeSync(0);
         bot.sendMessage(msg.chat.id, "Il cancello 2 è stato aperto!")
     }
 
