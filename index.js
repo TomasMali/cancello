@@ -81,42 +81,42 @@ bot.on('message', (msg) => {
 
     }
     else if (msg.text.toString().indexOf(CARTA_IDEN_TOMAS) === 0) {
-        bot.sendDocument(msg.chat.id, "files/carta_identita_tom.pdf") 
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/carta_identita_tom.pdf") 
     }
     else if (msg.text.toString().indexOf(CONTRATTO_TOMAMS) === 0) {
-        bot.sendDocument(msg.chat.id, "files/contratto_lav_tom.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/contratto_lav_tom.pdf")
     }
     else if (msg.text.toString().indexOf(CONTRATTO_CASA) === 0) {
-        bot.sendDocument(msg.chat.id, "files/ContrattoCasapdf.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/ContrattoCasapdf.pdf")
     }
     else if (msg.text.toString().indexOf(LIBRETTO_CLIO) === 0) {
-        bot.sendDocument(msg.chat.id, "files/Libretto_Clio_2018.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/Libretto_Clio_2018.pdf")
     }
     //----
     else if (msg.text.toString().indexOf(PASS_TOMAS) === 0) {
-        bot.sendDocument(msg.chat.id, "files/passaporto_tom.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/passaporto_tom.pdf")
     }
     else if (msg.text.toString().indexOf(PERG_TOM) === 0) {
-        bot.sendDocument(msg.chat.id, "files/pergamena_tom.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/pergamena_tom.pdf")
     }
     else if (msg.text.toString().indexOf(PERMS_TOM) === 0) {
-        bot.sendDocument(msg.chat.id, "files/PermessoSubordianto_tom.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/PermessoSubordianto_tom.pdf")
     }
     else if (msg.text.toString().indexOf(TESS_TOM) === 0) {
-        bot.sendDocument(msg.chat.id, "files/tesseraSanitaria_tom.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/tesseraSanitaria_tom.pdf")
     }
     //---
     else if (msg.text.toString().indexOf(CARTA_IDEN_ORNELA) === 0) {
-        bot.sendDocument(msg.chat.id, "files/carta_di_identita_orn.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/carta_di_identita_orn.pdf")
     }
     else if (msg.text.toString().indexOf(PERMES_ORNELLA) === 0) {
-        bot.sendDocument(msg.chat.id, "files/permessoOrnela.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/permessoOrnela.pdf")
     }
     else if (msg.text.toString().indexOf(CERT_MATT) === 0) {
-        bot.sendDocument(msg.chat.id, "files/CertificatoDiMatrimonio.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/CertificatoDiMatrimonio.pdf")
     }
     else if (msg.text.toString().indexOf(PERG_ORNELLA) === 0) {
-        bot.sendDocument(msg.chat.id, "files/carta_identita_tom.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/carta_identita_tom.pdf")
     }
     //--
     else
