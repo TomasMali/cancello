@@ -31,6 +31,10 @@ const CERT_MATT = "Certi.Matr"
 const CV_ORNELLA = "CV.Orn"
 const PERG_ORNELLA = "Perga.Orn"
 
+const CART_IDEN_BABI = "Cart.ID.Babi"
+const CV_BABI = 'CV.Babi'
+const CV_TONA = 'CV.Tona'
+
 
 
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
@@ -44,44 +48,45 @@ inline_keyboard = [];
 // Here starts everything
 bot.onText(/\/start/, (msg) => {
     var telegramUser = msg.from
-    
-        //  $.sendMessage("Utente (" + telegramUser.firstName + " " + telegramUser.lastName + ")  " + body.message)
-        bot.sendMessage(msg.chat.id, "Welcome " + msg.from.first_name + ", registrazione effettuata correttamente! Adesso puoi unirti ad un tavolo usando il menu Cerca tavola.", {
-            "reply_markup": {
-                "keyboard": [
-                    [APRI_CANCELLO],
-                    [CARTA_IDEN_TOMAS,CONTRATTO_TOMAMS,CONTRATTO_CASA,LIBRETTO_CLIO],
-                    [PASS_TOMAS,PERG_TOM,PERMS_TOM,TESS_TOM],
-                    [CARTA_IDEN_ORNELA,PERMES_ORNELLA,CERT_MATT,CV_ORNELLA,PERG_ORNELLA]
-                 
-                ]
-            }
-        });
+
+    //  $.sendMessage("Utente (" + telegramUser.firstName + " " + telegramUser.lastName + ")  " + body.message)
+    bot.sendMessage(msg.chat.id, "Welcome " + msg.from.first_name + ", registrazione effettuata correttamente! Adesso puoi unirti ad un tavolo usando il menu Cerca tavola.", {
+        "reply_markup": {
+            "keyboard": [
+                [APRI_CANCELLO],
+                [CARTA_IDEN_TOMAS, CONTRATTO_TOMAMS, CONTRATTO_CASA, LIBRETTO_CLIO],
+                [PASS_TOMAS, PERG_TOM, PERMS_TOM, TESS_TOM],
+                [CARTA_IDEN_ORNELA, PERMES_ORNELLA, CERT_MATT, CV_ORNELLA, PERG_ORNELLA],
+                [CART_IDEN_BABI, CV_BABI, CV_TONA]
+
+            ]
+        }
+    });
 });
 
 
-function apri(){
+function apri() {
 
-      LED.writeSync(1); //turn LED on or off depending on the button state (0 or 1)
-      setTimeout(() => {LED.writeSync(0);}, 100);
+    LED.writeSync(1); //turn LED on or off depending on the button state (0 or 1)
+    setTimeout(() => { LED.writeSync(0); }, 100);
 }
 
 
 // Catch every messagge text 
 bot.on('message', (msg) => {
 
-  //    const Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
-  //    const LED = new Gpio(17, 'out'); //use GPIO pin 4, and specify that it is output
+    //    const Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+    //    const LED = new Gpio(17, 'out'); //use GPIO pin 4, and specify that it is output
 
     if (msg.text.toString() === APRI_CANCELLO) {
 
         bot.sendMessage(msg.chat.id, "Il cancello 1 è stato aperto!")
 
-          setTimeout(apri, 500);
+        setTimeout(apri, 500);
 
     }
     else if (msg.text.toString().indexOf(CARTA_IDEN_TOMAS) === 0) {
-        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/carta_identita_tom.pdf") 
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/carta_identita_tom.pdf")
     }
     else if (msg.text.toString().indexOf(CONTRATTO_TOMAMS) === 0) {
         bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/contratto_lav_tom.pdf")
@@ -118,15 +123,24 @@ bot.on('message', (msg) => {
     else if (msg.text.toString().indexOf(PERG_ORNELLA) === 0) {
         bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/carta_identita_tom.pdf")
     }
+    // -- 
+    else if (msg.text.toString().indexOf(CART_IDEN_BABI) === 0) {
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/carta_identBabi.pdf")
+    }
+    else if (msg.text.toString().indexOf(CV_BABI) === 0) {
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/curriculumBabi.pdf")
+    }
+    else if (msg.text.toString().indexOf(CV_TONA) === 0) {
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/CV_tona.pdf")    
+    }
     //--
-    else
-    {
+    else {
         bot.sendMessage(msg.chat.id, "Commando non riconosciuto!")
     }
 
 })
-  
-  
+
+
 
 
 
