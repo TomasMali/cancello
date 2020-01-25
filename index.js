@@ -128,10 +128,10 @@ bot.on('message', (msg) => {
         bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/carta_identBabi.pdf")
     }
     else if (msg.text.toString().indexOf(CV_BABI) === 0) {
-        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/curriculumBabi.pdf")
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/CV-Europass_Arqile.pdf")
     }
     else if (msg.text.toString().indexOf(CV_TONA) === 0) {
-        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/CV_tona.pdf")    
+        bot.sendDocument(msg.chat.id, "/home/pi/Desktop/cancello/files/CV-Europass_Etona.pdf")    
     }
     //--
     else {
