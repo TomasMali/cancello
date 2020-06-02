@@ -105,7 +105,7 @@ bot.on('message', (msg) => {
         bot.sendDocument(msg.chat.id, "files/pergamena_tom.pdf")
     }
     else if (msg.text.toString().indexOf(PERMS_TOM) === 0) {
-        bot.sendDocument(msg.chat.id, "files/PermessoSubordianto_tom.pdf")
+        bot.sendDocument(msg.chat.id, "files/permessoTomas.pdf")
     }
     else if (msg.text.toString().indexOf(TESS_TOM) === 0) {
         bot.sendDocument(msg.chat.id, "files/tesseraSanitaria_tom.pdf")
