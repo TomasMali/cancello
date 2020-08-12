@@ -39,7 +39,7 @@ const CV_TONA = 'CV.Tona'
 
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(17, 'out'); //use GPIO pin 4 as output
-var FAN = new Gpio(27, 'out'); //use GPIO pin 4 as output
+var FAN_ = new Gpio(27, 'out'); //use GPIO pin 4 as output
 
 status = 0
 
@@ -54,6 +54,7 @@ bot.onText(/\/start/, (msg) => {
     bot.sendMessage(msg.chat.id, "Welcome " + msg.from.first_name + ", registrazione effettuata correttamente! Adesso puoi unirti ad un tavolo usando il menu Cerca tavola.", {
         "reply_markup": {
             "keyboard": [
+                [FAN],
                 [APRI_CANCELLO],
                 [CARTA_IDEN_TOMAS, CONTRATTO_TOMAMS, CONTRATTO_CASA, LIBRETTO_CLIO],
                 [PASS_TOMAS, PERG_TOM, PERMS_TOM, TESS_TOM],
@@ -74,14 +75,13 @@ function apri() {
 
 function fan() {
 
-    if(status==0){
-        FAN.writeSync(1); 
+   // if(status==0){
+        FAN_.writeSync(FAN_.readSync() ^ 1); 
         status = 1;
-    }
-    else{
-        FAN.writeSync(0); 
-        status = 1;
-    }
+  //  }
+  //  else{
+
+  //  }
 
 
 }
@@ -103,7 +103,7 @@ bot.on('message', (msg) => {
     else
     if (msg.text.toString() === FAN) {
 
-        text =   status == 0 ? "La ventola è accesa" : "La ventola è spenta" 
+        text =   FAN_.readSync() == 0 ? "La ventola è accesa" : "La ventola è spenta" 
         bot.sendMessage(msg.chat.id, text)
 
       fan()
