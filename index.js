@@ -13,7 +13,7 @@ const axios = require('axios');
 
 
 const APRI_CANCELLO = "\ud83d\udde3 Apri cancello"
-const APRI_CANCELLO_2 = "\ud83d\udde3 Apri cancello 2"
+const FAN = "\ud83d\udde3 Fan On/Off"
 
 const CARTA_IDEN_TOMAS = "C.Ide_Tom"
 const CONTRATTO_TOMAMS = "Cont.Lav.Tom"
@@ -39,8 +39,9 @@ const CV_TONA = 'CV.Tona'
 
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(17, 'out'); //use GPIO pin 4 as output
+var FAN = new Gpio(27, 'out'); //use GPIO pin 4 as output
 
-
+status = 0
 
 inline_keyboard = [];
 
@@ -71,6 +72,20 @@ function apri() {
     setTimeout(() => { LED.writeSync(0); }, 100);
 }
 
+function fan() {
+
+    if(status==0){
+        FAN.writeSync(1); 
+        status = 1;
+    }
+    else{
+        FAN.writeSync(0); 
+        status = 1;
+    }
+
+
+}
+
 
 // Catch every messagge text 
 bot.on('message', (msg) => {
@@ -83,6 +98,15 @@ bot.on('message', (msg) => {
         bot.sendMessage(msg.chat.id, "Il cancello 1 è stato aperto!")
 
         setTimeout(apri, 500);
+
+    }
+    else
+    if (msg.text.toString() === FAN) {
+
+        text =   status == 0 ? "La ventola è accesa" : "La ventola è spenta" 
+        bot.sendMessage(msg.chat.id, text)
+
+      fan()
 
     }
     else if (msg.text.toString().indexOf(CARTA_IDEN_TOMAS) === 0) {
