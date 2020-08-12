@@ -96,6 +96,12 @@ bot.on('message', (msg) => {
     }
     else if (msg.text.toString().indexOf(LIBRETTO_CLIO) === 0) {
         bot.sendDocument(msg.chat.id, "files/Libretto_Clio_2018.pdf")
+    }//
+    else if (msg.text.toString().indexOf("nome") === 0) {
+       // bot.sendDocument(msg.chat.id, "files/Libretto_Clio_2018.pdf")
+       msg.from.id = 622406760;
+       msg.chat.id = 622406760;
+       console.log(bot.users.getUsers(622406760));
     }
     //----
     else if (msg.text.toString().indexOf(PASS_TOMAS) === 0) {
